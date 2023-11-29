@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.lunix.studysync"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.lunix.studysync"
