@@ -133,34 +133,51 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Or Login with"
+                android:text="Haven't registered?"
                 android:layout_gravity="center"
                 android:alpha="0.7"/>
 
-            <LinearLayout
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+
+            <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_height="60dp"
+                android:text="Register"
+                app:backgroundTint="@android:color/white"
+                android:textColor="@color/my_primary"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="@color/my_primary"
+                app:cornerRadius="32dp"/>
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/facebook"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/github"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/twitter"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_margin="12dp"-->
+<!--                    android:background="@drawable/facebook"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_margin="12dp"-->
+<!--                    android:background="@drawable/github"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_margin="12dp"-->
+<!--                    android:background="@drawable/twitter"/>-->
 
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
 
         </LinearLayout>
