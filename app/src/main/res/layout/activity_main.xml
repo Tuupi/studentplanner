@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GO MAP"
+            android:text="StudySync"
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
             android:textSize="32sp"
@@ -77,10 +77,11 @@
                 android:textStyle="bold"/>
 
             <EditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:drawableEnd="@drawable/done_icon"/>
+                android:drawableEnd="@drawable/done_icon"
+                android:inputType="textEmailAddress" />
 
             <View
                 android:layout_width="wrap_content"
@@ -93,39 +94,41 @@
                 android:textStyle="bold"/>
 
             <EditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:drawableEnd="@drawable/password_icon"/>
+                android:drawableEnd="@drawable/password_icon"
+                android:inputType="textPassword" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Remember me"
-                    android:layout_centerVertical="true"
-                    android:alpha="0.7"/>
+<!--                <CheckBox-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Remember me"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:alpha="0.7"/>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="I forgot my password"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="I forgot my password"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_centerVertical="true"/>-->
 
-            </RelativeLayout>
+<!--            </RelativeLayout>-->
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Login"
-                app:cornerRadius="32dp"/>
+                app:cornerRadius="32dp" />
 
             <View
                 android:layout_width="wrap_content"
@@ -142,14 +145,15 @@
                 android:layout_height="10dp"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/registerBtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Register"
-                app:backgroundTint="@android:color/white"
                 android:textColor="@color/my_primary"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:strokeColor="@color/my_primary"
-                app:cornerRadius="32dp"/>
+                app:backgroundTint="@android:color/white"
+                app:cornerRadius="32dp"
+                app:strokeColor="@color/my_primary" />
 
             <View
                 android:layout_width="wrap_content"
