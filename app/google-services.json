@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "316889175629",
+    "firebase_url": "https://studysync-dacbe-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "studysync-dacbe",
+    "storage_bucket": "studysync-dacbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316889175629:android:12e129c493deacb3a8ee04",
+        "android_client_info": {
+          "package_name": "com.lunix.studysync"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBukiZyZKo2FYpKwE4HAqcJbav7_wApECQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
