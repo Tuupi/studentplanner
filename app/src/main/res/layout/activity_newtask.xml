@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".newtask">
+
+    <EditText
+        android:id="@+id/editTextText6"
+        android:layout_width="327dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_medium"
+        android:inputType="text"
+        android:text="Date"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="260dp" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="54dp"
+        android:layout_height="27dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Cancel"
+        android:textColor="#E6ECFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="57dp" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="39dp"
+        android:layout_height="27dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Save"
+        android:textColor="#E6ECFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="332dp"
+        tools:layout_editor_absoluteY="57dp" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="New Task"
+        android:textColor="#001A3A"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <EditText
+        android:id="@+id/editTextText4"
+        android:layout_width="327dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Task Name"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <EditText
+        android:id="@+id/editTextText5"
+        android:layout_width="327dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_medium"
+        android:inputType="text"
+        android:text="Subject Name"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="198dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

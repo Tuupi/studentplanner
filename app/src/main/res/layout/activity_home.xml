@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home">
+
+    <ImageView
+        android:id="@+id/imageView54"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menu"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="541dp" />
+
+    <ImageView
+        android:id="@+id/imageView53"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menu"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <ImageView
+        android:id="@+id/imageView52"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menu"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="351dp" />
+
+    <ImageView
+        android:id="@+id/imageView49"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menu"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="283dp" />
+
+    <ImageView
+        android:id="@+id/imageView50"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menu"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <ImageView
+        android:id="@+id/imageView51"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/menu"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <ImageView
+        android:id="@+id/imageView44"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/exam"
+        tools:layout_editor_absoluteX="188dp"
+        tools:layout_editor_absoluteY="830dp" />
+
+    <ImageView
+        android:id="@+id/imageView45"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/task"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="830dp" />
+
+    <ImageView
+        android:id="@+id/imageView46"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/home"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="830dp" />
+
+    <ImageView
+        android:id="@+id/imageView47"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/setting"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="830dp" />
+
+    <ImageView
+        android:id="@+id/imageView48"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/subject"
+        tools:layout_editor_absoluteX="263dp"
+        tools:layout_editor_absoluteY="830dp" />
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Database: Chapter 1"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="531dp" />
+
+    <TextView
+        android:id="@+id/textView53"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_italic"
+        android:text="Wednesday"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="504dp" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="03 Dec 2023"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="555dp" />
+
+    <TextView
+        android:id="@+id/textView51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium_italic"
+        android:text="Today"
+        android:textColor="#001A3A"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="106dp" />
+
+    <TextView
+        android:id="@+id/textView50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="English: Chapter 2"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="439dp" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="02 Dec 2023"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="463dp" />
+
+    <TextView
+        android:id="@+id/textView52"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_italic"
+        android:text="Tomorrow"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="412dp" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Math: Chapter 1"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="344dp" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="01 Dec 2023"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="368dp" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Home"
+        android:textColor="#001A3A"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="47dp" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Database: Make a database"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="275dp" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Math: Gauss"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="01 Dec 2023"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="299dp" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="01 Dec 2023"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="157dp" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="01 Dec 2023"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="228dp" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="English: Vocabulary"
+        android:textColor="#001A3A"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <ImageView
+        android:id="@+id/imageView55"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/calendar"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="774dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
