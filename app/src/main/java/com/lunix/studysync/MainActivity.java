@@ -64,9 +64,8 @@ public class MainActivity extends AppCompatActivity {
         registBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchActivityIntent = new Intent(MainActivity.this, register.class);
-                startActivity(switchActivityIntent);
-                finish();
+                Intent in = new Intent(MainActivity.this, register.class);
+                startActivity(in);
             }
         });
 
