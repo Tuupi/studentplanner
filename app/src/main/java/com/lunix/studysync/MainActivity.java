@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button loginBtn = (Button)findViewById(R.id.loginBtn);
+        Button loginBtn = (Button)findViewById(R.id.registerSubmit);
         email = findViewById(R.id.email);
         passwordlogin = findViewById(R.id.password);
 
@@ -82,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(MainActivity.this, "Authentication Success",
+                                    Toast.LENGTH_SHORT).show();
                             Intent switchActivityIntent = new Intent(MainActivity.this, crudtest.class);
                             startActivity(switchActivityIntent);
                         } else {
