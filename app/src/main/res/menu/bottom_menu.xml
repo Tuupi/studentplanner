@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/homedashboard"
+        android:id="@+id/homes"
         android:title="Home"
         android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/shortsdashboard"
+        android:id="@+id/shorts"
         android:title="Shorts"
         android:icon="@drawable/baseline_whatshot_24"
         />
@@ -17,11 +17,11 @@
         android:title=""/>
 
     <item
-        android:id="@+id/subscriptionsdashboard"
+        android:id="@+id/subscriptions"
         android:title="Subscriptions"
         android:icon="@drawable/baseline_subscriptions_24" />
     <item
-        android:id="@+id/librarydashboard"
+        android:id="@+id/library"
         android:title="Library"
         android:icon="@drawable/baseline_video_library_24" />
 
