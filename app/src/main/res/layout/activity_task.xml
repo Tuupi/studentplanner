@@ -178,4 +178,11 @@
         tools:layout_editor_absoluteX="336dp"
         tools:layout_editor_absoluteY="141dp" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="86dp"
+        android:layout_height="66dp"
+        app:srcCompat="@drawable/baseline_add_home_24"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="660dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
