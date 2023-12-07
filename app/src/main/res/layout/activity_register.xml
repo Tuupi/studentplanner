@@ -46,7 +46,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/emailreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/done_icon"
@@ -64,7 +64,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/passwordreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/password_icon"

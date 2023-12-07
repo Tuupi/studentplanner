@@ -26,9 +26,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button loginBtn = (Button)findViewById(R.id.registerSubmit);
-        email = findViewById(R.id.email);
-        passwordlogin = findViewById(R.id.password);
+        Button loginBtn = (Button)findViewById(R.id.login);
+        email = findViewById(R.id.emailreg);
+        passwordlogin = findViewById(R.id.passwordreg);
+        Button registBtn = findViewById(R.id.registerBtn);
 
         // ...
         // Initialize Firebase Auth
@@ -59,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         );
+
+        registBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainActivity.this, register.class);
+                startActivity(switchActivityIntent);
+                finish();
+            }
+        });
 
     }
     @Override
