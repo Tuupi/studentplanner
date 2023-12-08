@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(MainActivity.this, "Authentication Success",
                                     Toast.LENGTH_SHORT).show();
-                            Intent switchActivityIntent = new Intent(MainActivity.this, crudtest.class);
+                            Intent switchActivityIntent = new Intent(MainActivity.this, dashboard.class);
                             startActivity(switchActivityIntent);
                         } else {
                             // If sign in fails, display a message to the user.
