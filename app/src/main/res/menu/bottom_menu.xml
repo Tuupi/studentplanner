@@ -3,25 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/homedashboard"
+        android:id="@+id/homes"
         android:title="Home"
-        android:icon="@drawable/home"/>
+        android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/shortsdashboard"
-        android:title="Tasks"
-        android:icon="@drawable/task"/>
+        android:id="@+id/shorts"
+        android:title="Shorts"
+        android:icon="@drawable/baseline_whatshot_24"
+        />
 
     <item
         android:title=""/>
 
     <item
-        android:id="@+id/subscriptionsdashboard"
-        android:title="Exams"
-        android:icon="@drawable/exam" />
+        android:id="@+id/subscriptions"
+        android:title="Subscriptions"
+        android:icon="@drawable/baseline_subscriptions_24" />
     <item
-        android:id="@+id/librarydashboard"
-        android:title="Subject"
-        android:icon="@drawable/subject"/>
+        android:id="@+id/library"
+        android:title="Library"
+        android:icon="@drawable/baseline_video_library_24" />
 
 </menu>

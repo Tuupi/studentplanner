@@ -7,6 +7,10 @@ android {
     namespace = "com.lunix.studysync"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.lunix.studysync"
         minSdk = 24
@@ -39,6 +43,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
+
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
 

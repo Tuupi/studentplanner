@@ -3,6 +3,7 @@ package com.lunix.studysync;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class register extends AppCompatActivity {
         regSubmit = findViewById(R.id.registerSubmit);
         emailreg =findViewById(R.id.emailreg);
         passwordreg = findViewById(R.id.passwordreg);
+        mAuth = FirebaseAuth.getInstance();
 
         regSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +48,7 @@ public class register extends AppCompatActivity {
                 if(TextUtils.isEmpty(passwordstr)){
                     Toast.makeText(register.this, "Enter Password", Toast.LENGTH_SHORT).show();
                     return;
-                }
+                } else {
                 mAuth.createUserWithEmailAndPassword(emailstr, passwordstr)
                         .addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -55,6 +57,8 @@ public class register extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+                                    Intent switchActivityIntent = new Intent(register.this, dashboard.class);
+                                    startActivity(switchActivityIntent);
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -62,16 +66,17 @@ public class register extends AppCompatActivity {
                                 }
                             }
                         });
+                }
             }
         });
     }
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Toast.makeText(register.this, "Cannot find your account", Toast.LENGTH_SHORT).show();
-            return;
-        }
-    }
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            Toast.makeText(register.this, "Cannot find your account", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//    }
 }
