@@ -3,15 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LibraryFragment">
+    tools:context=".TaskFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Library"
+        android:text="Tasks"
         android:gravity="center"
         android:textSize="30sp"
         android:textColor="@color/darkest_blue" />
+
+    <ListView
+        android:layout_width="351dp"
+        android:layout_height="827dp"
+        android:layout_gravity="center" />
 
 </FrameLayout>

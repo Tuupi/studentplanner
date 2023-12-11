@@ -5,24 +5,23 @@
     <item
         android:id="@+id/homedashboard"
         android:title="Home"
-        android:icon="@drawable/baseline_home_24"/>
+        android:icon="@drawable/home"/>
 
     <item
         android:id="@+id/shortsdashboard"
-        android:title="Shorts"
-        android:icon="@drawable/baseline_whatshot_24"
-        />
+        android:title="Tasks"
+        android:icon="@drawable/task"/>
 
     <item
         android:title=""/>
 
     <item
         android:id="@+id/subscriptionsdashboard"
-        android:title="Subscriptions"
-        android:icon="@drawable/baseline_subscriptions_24" />
+        android:title="Exams"
+        android:icon="@drawable/exam" />
     <item
         android:id="@+id/librarydashboard"
-        android:title="Library"
-        android:icon="@drawable/baseline_video_library_24" />
+        android:title="Subject"
+        android:icon="@drawable/subject"/>
 
 </menu>

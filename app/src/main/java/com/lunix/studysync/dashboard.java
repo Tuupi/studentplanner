@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -30,15 +29,6 @@ public class dashboard extends AppCompatActivity {
     DrawerLayout drawerLayout;
     BottomNavigationView bottomNavigationView;
 
-    private static final int home = R.id.homedashboard;
-
-    private static final int shorts = R.id.shortsdashboard;
-    private static final int subscription = R.id.subscriptionsdashboard;
-    private static final int library = R.id.librarydashboard;
-
-
-
-    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +38,12 @@ public class dashboard extends AppCompatActivity {
         fab = findViewById(R.id.fab);
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
@@ -61,20 +56,19 @@ public class dashboard extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
-                case home:
+                case MODE_APPEND:
                     replaceFragment(new HomeFragment());
                     break;
-                case shorts:
-                    replaceFragment(new ShortsFragment());
+                case RESULT_CANCELED:
+                    replaceFragment(new TaskFragment());
                     break;
-                case subscription:
-                    replaceFragment(new SubscriptionsFragment());
+                case RESULT_OK:
+                    replaceFragment(new ExamFragment());
                     break;
-                case library:
-                    replaceFragment(new LibraryFragment());
+                case BIND_AUTO_CREATE:
+                    replaceFragment(new TaskFragment());
                     break;
             }
-
             return true;
         });
 

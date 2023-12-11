@@ -49,14 +49,14 @@
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_upload_24"/>
+            android:layout_width="23dp"
+            android:layout_height="26dp"
+            android:src="@drawable/task" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload a video"
+            android:text="Create a new task"
             android:textColor="@color/darkest_blue"
             android:layout_marginLeft="30dp"
             android:textSize="16sp"/>
@@ -72,14 +72,14 @@
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_whatshot_24"/>
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/exam" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create a short"
+            android:text="Create a new exam"
             android:textColor="@color/darkest_blue"
             android:layout_marginLeft="30dp"
             android:textSize="16sp"/>
@@ -88,27 +88,27 @@
 
     <LinearLayout
         android:id="@+id/layoutLive"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="61dp"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:paddingTop="10dp"
+        android:paddingRight="10dp"
         android:paddingBottom="30dp">
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_cast_connected_24"/>
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/subject" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Go live"
-            android:textColor="@color/darkest_blue"
             android:layout_marginLeft="30dp"
-            android:textSize="16sp"/>
+            android:text="Create a new subject"
+            android:textColor="@color/darkest_blue"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

@@ -14,4 +14,9 @@
         android:textSize="30sp"
         android:textColor="@color/darkest_blue" />
 
+    <ListView
+        android:layout_width="351dp"
+        android:layout_height="827dp"
+        android:layout_gravity="center" />
+
 </FrameLayout>
