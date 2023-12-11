@@ -20,14 +20,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    EditText email, passwordlogin;
+    EditText emaillogin, passwordlogin;
     private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button loginBtn = (Button)findViewById(R.id.login);
-        email = findViewById(R.id.emailreg);
+        emaillogin = findViewById(R.id.emailreg);
         passwordlogin = findViewById(R.id.passwordreg);
         Button registBtn = findViewById(R.id.registerBtn);
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String emailStr, passwordStr;
-                emailStr = email.getText().toString();
+                emailStr = emaillogin.getText().toString();
                 passwordStr = passwordlogin.getText().toString();
 
                 if(TextUtils.isEmpty(emailStr)){
@@ -54,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 signIn(emailStr, passwordStr);
 
-
-//                Intent switchActivityIntent = new Intent(MainActivity.this, crudtest.class);
-//                startActivity(switchActivityIntent);
             }
         }
         );
@@ -66,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent in = new Intent(MainActivity.this, register.class);
                 startActivity(in);
+                emaillogin.setText("");
+                passwordlogin.setText("");
             }
         });
 
@@ -76,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Toast.makeText(MainActivity.this, "Cannot find your account", Toast.LENGTH_SHORT).show();
+//            Intent switchActivityIntent = new Intent(MainActivity.this, dashboard.class);
+//            startActivity(switchActivityIntent);
             return;
         }
     }
@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(MainActivity.this, "Authentication Success",
                                     Toast.LENGTH_SHORT).show();
+                            emaillogin.setText("");
+                            passwordlogin.setText("");
                             Intent switchActivityIntent = new Intent(MainActivity.this, dashboard.class);
                             startActivity(switchActivityIntent);
                         } else {
