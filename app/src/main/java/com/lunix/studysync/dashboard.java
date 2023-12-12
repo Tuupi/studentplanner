@@ -68,13 +68,13 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         bottomNavigationView.setBackground(null);
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
-            if (item.getItemId() == R.id.homedashboard) {
+            if (item.getItemId() == R.id.home) {
                 replaceFragment(new HomeFragment());
-            } else if (item.getItemId() == R.id.shortsdashboard) {
+            } else if (item.getItemId() == R.id.exam) {
                 replaceFragment(new ExamFragment());
-            } else if (item.getItemId() == R.id.subscriptionsdashboard) {
+            } else if (item.getItemId() == R.id.subject) {
                 replaceFragment(new SubjectFragment());
-            } else if (item.getItemId() == R.id.librarydashboard) {
+            } else if (item.getItemId() == R.id.task) {
                 replaceFragment(new TaskFragment());
             }
 

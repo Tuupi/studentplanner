@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/homedashboard"
+        android:id="@+id/home"
         android:title="Home"
         android:icon="@drawable/home"/>
 
     <item
-        android:id="@+id/shortsdashboard"
+        android:id="@+id/task"
         android:title="Tasks"
         android:icon="@drawable/task"/>
 
@@ -16,11 +16,11 @@
         android:title=""/>
 
     <item
-        android:id="@+id/subscriptionsdashboard"
+        android:id="@+id/exam"
         android:title="Exams"
         android:icon="@drawable/exam" />
     <item
-        android:id="@+id/librarydashboard"
+        android:id="@+id/subject"
         android:title="Subject"
         android:icon="@drawable/subject"/>
 
