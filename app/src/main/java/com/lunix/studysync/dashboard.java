@@ -1,7 +1,10 @@
 package com.lunix.studysync;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -11,7 +14,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,14 +26,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.window.OnBackInvokedDispatcher;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Calendar;
 
 public class dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,11 +48,17 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
     DrawerLayout drawerLayout;
     BottomNavigationView bottomNavigationView;
     private FirebaseAuth mAuth;
+    private EditText selectedDate;
+    private Button pickDateBtn;
+
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        OnBackPressedDispatcher back = getOnBackPressedDispatcher();
+
+
         mAuth = FirebaseAuth.getInstance();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         fab = findViewById(R.id.fab);
@@ -84,6 +102,33 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
                 showBottomDialog();
             }
         });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button press event here
+                // You can perform any necessary actions or navigation
+                AlertDialog.Builder builder = new AlertDialog.Builder(dashboard.this);
+                builder.setCancelable(false);
+                builder.setMessage("Do you want to Exit?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //if user pressed "yes", then he is allowed to exit from application
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //if user select "No", just cancel this dialog and continue with app
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert=builder.create();
+                alert.show();
+            }
+        };
+        back.addCallback(this,callback);
     }
 
     private  void replaceFragment(Fragment fragment) {
@@ -110,6 +155,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
 
                 dialog.dismiss();
                 Toast.makeText(dashboard.this,"Upload a Video is clicked",Toast.LENGTH_SHORT).show();
+                showNewTask();
 
             }
         });
@@ -130,6 +176,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
 
                 dialog.dismiss();
                 Toast.makeText(dashboard.this,"Go live is Clicked",Toast.LENGTH_SHORT).show();
+                showNewCourse();
 
             }
         });
@@ -148,21 +195,44 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         dialog.getWindow().setGravity(Gravity.BOTTOM);
 
 
+
     }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         if(menuItem.getItemId() == R.id.nav_logout){
-            mAuth.signOut();
-            Intent switchActivityIntent = new Intent(dashboard.this, MainActivity.class);
-            startActivity(switchActivityIntent);
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(dashboard.this);
+            builder.setCancelable(false);
+            builder.setMessage("Do you want to Log out?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    mAuth.signOut();
+                    Intent switchActivityIntent = new Intent(dashboard.this, MainActivity.class);
+                    startActivity(switchActivityIntent);
+                    finish();
+                }
+            });
+            builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user select "No", just cancel this dialog and continue with app
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alert=builder.create();
+            alert.show();
 
         } else if(menuItem.getItemId() == R.id.nav_home){
             Toast.makeText(dashboard.this,"Create a home is Clicked",Toast.LENGTH_SHORT).show();
-        }else if(menuItem.getItemId() == R.id.nav_settings){
-            Toast.makeText(dashboard.this,"Create a settings is Clicked",Toast.LENGTH_SHORT).show();
-        }else if(menuItem.getItemId() == R.id.nav_about){
+        }
+//        else if(menuItem.getItemId() == R.id.nav_settings){
+//            Toast.makeText(dashboard.this,"Create a settings is Clicked",Toast.LENGTH_SHORT).show();
+//        }
+        else if(menuItem.getItemId() == R.id.nav_about){
             Toast.makeText(dashboard.this,"Create a about is Clicked",Toast.LENGTH_SHORT).show();
+            Intent switchActivityIntent = new Intent(dashboard.this, aboutUs.class);
+            startActivity(switchActivityIntent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
 
@@ -174,11 +244,103 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.createexam);
+        ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
+        pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
+        selectedDate = dialog.findViewById(R.id.Date);
         dialog.show();
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        datebutton();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.CENTER);
     }
+    private void showNewTask() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.createtask);
+        ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
+        pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
+        selectedDate = dialog.findViewById(R.id.Date);
+        dialog.show();
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        datebutton();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.CENTER);
+
+
+    }
+    private void showNewCourse() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.createsubject);
+        ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
+        pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
+        selectedDate = dialog.findViewById(R.id.Date);
+        dialog.show();
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        datebutton();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.CENTER);
+    }
+
+    private void datebutton(){
+
+        // on below line we are adding click listener for our pick date button
+        pickDateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // on below line we are getting
+                // the instance of our calendar.
+                final Calendar c = Calendar.getInstance();
+
+                // on below line we are getting
+                // our day, month and year.
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+
+                // on below line we are creating a variable for date picker dialog.
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        // on below line we are passing context.
+                        dashboard.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // on below line we are setting date to our text view.
+                                selectedDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                            }
+                        },
+                        // on below line we are passing year,
+                        // month and day for selected date in our date picker.
+                        year, month, day);
+                // at last we are calling show to
+                // display our date picker dialog.
+                datePickerDialog.show();
+            }
+        });
+    }
+
 
 }

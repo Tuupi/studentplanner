@@ -18,11 +18,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/createExamTitle"
+            android:id="@+id/createTaskTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="viewStart"
-            android:text="Create Exam"
+            android:text="Create Task"
             android:padding="8dp"
             android:textColor="@color/darkest_blue"
             android:layout_marginStart="12dp"
@@ -48,24 +48,24 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/examNameHint"
+            android:id="@+id/TaskNameHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Exam :"
+            android:text="Task :"
             android:textFontWeight="100"/>
 
 
         <EditText
-            android:id="@+id/examName"
+            android:id="@+id/TaskName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:hint="Exam Name" />
+            android:hint="Task Name" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearCourse"
+        android:id="@+id/layoutCourse"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,18 +87,18 @@
             android:hint="Course Name" />
 
     </LinearLayout><LinearLayout
-        android:id="@+id/linearDate"
-        android:orientation="vertical"
+    android:id="@+id/linearDate"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/dateHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/dateHint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date :"
-            android:textFontWeight="100"/>
+        android:text="Date :"
+        android:textFontWeight="100"/>
 
 
     <EditText
@@ -112,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"/>
 
-    </LinearLayout>
+</LinearLayout>
 
     <Button
         android:id="@+id/idBtnPickDate"

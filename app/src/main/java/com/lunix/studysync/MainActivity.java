@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         if(currentUser != null){
             Intent switchActivityIntent = new Intent(MainActivity.this, dashboard.class);
             startActivity(switchActivityIntent);
+            finish();
             return;
         }
     }
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             passwordlogin.setText("");
                             Intent switchActivityIntent = new Intent(MainActivity.this, dashboard.class);
                             startActivity(switchActivityIntent);
+                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

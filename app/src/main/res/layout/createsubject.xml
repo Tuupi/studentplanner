@@ -18,11 +18,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/createExamTitle"
+            android:id="@+id/createCourseTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="viewStart"
-            android:text="Create Exam"
+            android:text="Add Course"
             android:padding="8dp"
             android:textColor="@color/darkest_blue"
             android:layout_marginStart="12dp"
@@ -40,29 +40,29 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layoutTask"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layoutCourseName"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="10dp">-->
 
-        <TextView
-            android:id="@+id/examNameHint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Exam :"
-            android:textFontWeight="100"/>
+<!--        <TextView-->
+<!--            android:id="@+id/CourseHint"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Course :"-->
+<!--            android:textFontWeight="100"/>-->
 
 
-        <EditText
-            android:id="@+id/examName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:hint="Exam Name" />
+<!--        <EditText-->
+<!--            android:id="@+id/courseName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:hint="Exam Name" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/linearCourse"
@@ -86,19 +86,21 @@
             android:paddingTop="10dp"
             android:hint="Course Name" />
 
-    </LinearLayout><LinearLayout
-        android:id="@+id/linearDate"
-        android:orientation="vertical"
+    </LinearLayout>
+
+    <LinearLayout
+    android:id="@+id/linearDate"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/dateHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/dateHint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date :"
-            android:textFontWeight="100"/>
+        android:text="Date :"
+        android:textFontWeight="100"/>
 
 
     <EditText
@@ -112,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"/>
 
-    </LinearLayout>
+</LinearLayout>
 
     <Button
         android:id="@+id/idBtnPickDate"
@@ -124,7 +126,7 @@
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/idBtnCreateExam"
+        android:id="@+id/idBtnCreateCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
