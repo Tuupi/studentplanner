@@ -32,8 +32,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:src="@drawable/baseline_clear_24"
-            android:layout_marginLeft="190dp"
+            android:layout_marginLeft="150dp"
             android:layout_marginTop="8dp"
             android:id="@+id/cancelButton"/>
 
@@ -63,8 +64,49 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearCourse"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/courseNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Course :"
+            android:textFontWeight="100"/>
 
 
+        <EditText
+            android:id="@+id/CourseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:hint="Course Name" />
 
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/idBtnPickDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:text="Pick Date"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/idBtnCreateExam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:text="Create"
+        android:textAllCaps="false" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
 
 </LinearLayout>
