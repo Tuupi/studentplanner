@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -57,12 +58,8 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             navigationView.setCheckedItem(R.id.nav_home);
 
         }
-        navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
-
-
-
-
-
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.bringToFront();
         replaceFragment(new HomeFragment());
 
         bottomNavigationView.setBackground(null);
@@ -102,12 +99,12 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheetlayout);
 
-        LinearLayout videoLayout = dialog.findViewById(R.id.layoutVideo);
-        LinearLayout shortsLayout = dialog.findViewById(R.id.layoutShorts);
-        LinearLayout liveLayout = dialog.findViewById(R.id.layoutLive);
+        LinearLayout layoutTask = dialog.findViewById(R.id.layoutTask);
+        LinearLayout layoutExam = dialog.findViewById(R.id.layoutExam);
+        LinearLayout layoutSubject = dialog.findViewById(R.id.layoutSubject);
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
 
-        videoLayout.setOnClickListener(new View.OnClickListener() {
+        layoutTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -117,7 +114,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
 
-        shortsLayout.setOnClickListener(new View.OnClickListener() {
+        layoutExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -127,7 +124,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
 
-        liveLayout.setOnClickListener(new View.OnClickListener() {
+        layoutSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -153,21 +150,24 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     }
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
         if(menuItem.getItemId() == R.id.nav_logout){
             mAuth.signOut();
+            Intent switchActivityIntent = new Intent(dashboard.this, MainActivity.class);
+            startActivity(switchActivityIntent);
+            finish();
+
+        } else if(menuItem.getItemId() == R.id.nav_home){
+            Toast.makeText(dashboard.this,"Create a home is Clicked",Toast.LENGTH_SHORT).show();
+        }else if(menuItem.getItemId() == R.id.nav_settings){
+            Toast.makeText(dashboard.this,"Create a settings is Clicked",Toast.LENGTH_SHORT).show();
+        }else if(menuItem.getItemId() == R.id.nav_about){
+            Toast.makeText(dashboard.this,"Create a about is Clicked",Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
-    }
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+
     }
 
 }
