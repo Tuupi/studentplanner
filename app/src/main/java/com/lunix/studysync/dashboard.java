@@ -56,8 +56,8 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
-
         }
+
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.bringToFront();
         replaceFragment(new HomeFragment());
@@ -167,6 +167,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
+
 
     }
 
