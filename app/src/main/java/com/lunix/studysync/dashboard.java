@@ -120,7 +120,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
 
                 dialog.dismiss();
                 Toast.makeText(dashboard.this,"Create a short is Clicked",Toast.LENGTH_SHORT).show();
-
+                showNewExam();
             }
         });
 
@@ -169,6 +169,16 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         return true;
 
 
+    }
+    private void showNewExam() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_newexam);
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.CENTER);
     }
 
 }

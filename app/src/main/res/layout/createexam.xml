@@ -39,6 +39,30 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layoutTask"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/examNameHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exam :"
+            android:textFontWeight="100"/>
+
+
+        <EditText
+            android:id="@+id/examName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:hint="Exam Name" />
+
+    </LinearLayout>
+
 
 
 
