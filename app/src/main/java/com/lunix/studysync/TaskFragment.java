@@ -8,57 +8,191 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TaskFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
 public class TaskFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TaskFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShortsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TaskFragment newInstance(String param1, String param2) {
-        TaskFragment fragment = new TaskFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private ArrayList<task> list = new ArrayList<>();
+    private DatabaseReference database;
+    private TaskAdapter taskAdapter;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_task, container, false);
+
+        RecyclerView recyclerView = view.findViewById(R.id.listTask); // Replace 'listTask' with the actual ID of your RecyclerView
+        database = FirebaseDatabase.getInstance().getReference("task");
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), list);
+        recyclerView.setAdapter(taskAdapter);
+
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear(); // Clear the list before adding new items
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    task menuItem = dataSnapshot.getValue(task.class);
+                    list.add(menuItem);
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle errors if needed
+            }
+        });
+
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_task, container, false);
+    private void setContentView(int fragmentTask) {
     }
-}
+
+    private void fetchDataFromFirebase() {
+        list.clear();
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    task menuItem = dataSnapshot.getValue(task.class);
+                    list.add(menuItem);
+                }
+                taskAdapter.notifyDataSetChanged(); // Updated to menuAdapter
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle errors if needed
+            }
+        });
+    }
+
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_task, container, false);
+//
+//        RecyclerView recyclerView = view.findViewById(R.id.listTask); // Replace 'listTask' with the actual ID of your RecyclerView
+//        DatabaseReference database = FirebaseDatabase.getInstance().getReference("task");
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//
+//        ArrayList<task> list = new ArrayList<>(); // Declare the 'list' variable
+//        TaskAdapter = new TaskAdapter(getActivity(), list);
+//        recyclerView.setAdapter(TaskAdapter);
+//
+//        database.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                list.clear(); // Clear the list before adding new items
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    task menuItem = dataSnapshot.getValue(task.class);
+//                    list.add(menuItem);
+//                }
+//                TaskAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                // Handle errors if needed
+//            }
+//        });
+//
+//        return view;
+//    }
+//
+////        btnBack = findViewById(R.id.btnBack);
+////
+////        btnBack.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                Intent back = new Intent(MenuPage.this, HomePage.class);
+////                startActivity(back);
+////            }
+////        });
+//
+////        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+////            @Override
+////            public boolean onQueryTextSubmit(String query) {
+////                performSearch(query);
+////                return true;
+////            }
+////
+////            @Override
+////            public boolean onQueryTextChange(String newText) {
+////                if (newText.isEmpty()) {
+////                    list.clear();
+////                    fetchDataFromFirebase();
+////                } else {
+////                    performSearch(newText);
+////                }
+////                return false;
+////            }
+////        });
+////
+////        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+////            @Override
+////            public boolean onClose() {
+////                list.clear();
+////                fetchDataFromFirebase();
+////                return false;
+////            }
+////        });
+////    }
+//
+//    private void setContentView(int fragmentTask) {
+//    }
+//
+//    private void fetchDataFromFirebase() {
+//        list.clear();
+//        database.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    task menuItem = dataSnapshot.getValue(task.class);
+//                    list.add(menuItem);
+//                }
+//                TaskAdapter.notifyDataSetChanged(); // Updated to menuAdapter
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                // Handle errors if needed
+//            }
+//        });
+//    }
+
+//    private void performSearch(String query) {
+//        list.clear();
+//        if (!query.isEmpty()) {
+//            database.orderByChild("nameProduct").equalTo(query).addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                        task menuItem = dataSnapshot.getValue(task.class);
+//                        list.add(menuItem);
+//                    }
+//                    TaskAdapter.notifyDataSetChanged(); // Updated to menuAdapter
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                    // Handle errors if needed
+//                }
+//            });
+//        } else {
+//            fetchDataFromFirebase();
+//        }
+    }
