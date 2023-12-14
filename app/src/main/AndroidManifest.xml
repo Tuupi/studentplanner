@@ -43,7 +43,7 @@
             android:name=".exam"
             android:exported="false" />
         <activity
-            android:name=".task"
+            android:name=".Task"
             android:exported="false" />
         <activity
             android:name=".crudtest"

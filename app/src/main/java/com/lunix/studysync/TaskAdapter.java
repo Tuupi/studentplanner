@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
 
     Context context;
-    ArrayList<task> list;
+    ArrayList<Task> list;
 
-    public TaskAdapter(Context context, ArrayList<task> list) {
+    public TaskAdapter(Context context, ArrayList<Task> list) {
         this.context = context;
         this.list = list;
     }
@@ -30,7 +30,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.MyViewHolder holder, int position) {
-        task task = list.get(position);
+        Task task = list.get(position);
         holder.course.setText(task.getCourse());
         holder.date.setText(task.getDate());
     }

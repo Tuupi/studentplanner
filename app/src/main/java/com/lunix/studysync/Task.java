@@ -1,7 +1,11 @@
 package com.lunix.studysync;
 
-public class task {
-        String course, date;
+public class Task {
+        String name, course, date;
+
+        public String getName() {
+        return name;
+    }
 
         public String getCourse() {
             return course;

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 public class TaskFragment extends Fragment {
 
-    private ArrayList<task> list = new ArrayList<>();
+    private ArrayList<Task> list = new ArrayList<>();
     private DatabaseReference database;
     private TaskAdapter taskAdapter;
 
@@ -30,21 +31,21 @@ public class TaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.listTask); // Replace 'listTask' with the actual ID of your RecyclerView
-        database = FirebaseDatabase.getInstance().getReference("task");
+        RecyclerView recyclerView = view.findViewById(R.id.listTask);
+        database = FirebaseDatabase.getInstance().getReference("Task");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        TaskAdapter taskAdapter = new TaskAdapter(getActivity(), list);
+        taskAdapter = new TaskAdapter(getActivity(), list);
         recyclerView.setAdapter(taskAdapter);
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear(); // Clear the list before adding new items
+                list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    task menuItem = dataSnapshot.getValue(task.class);
-                    list.add(menuItem);
+                    Task taskItem = dataSnapshot.getValue(Task.class);
+                    list.add(taskItem);
                 }
                 taskAdapter.notifyDataSetChanged();
             }
@@ -55,41 +56,28 @@ public class TaskFragment extends Fragment {
             }
         });
 
-        return view;
-    }
-
-    private void setContentView(int fragmentTask) {
-    }
-
-    private void fetchDataFromFirebase() {
-        list.clear();
-        database.addValueEventListener(new ValueEventListener() {
+        Button createButton = view.findViewById(R.id.createButton);
+        createButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    task menuItem = dataSnapshot.getValue(task.class);
-                    list.add(menuItem);
-                }
-                taskAdapter.notifyDataSetChanged(); // Updated to menuAdapter
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle errors if needed
+            public void onClick(View v) {
+                // Handle the button click event
+                // Perform your desired action here, such as opening a new activity or displaying a dialog
             }
         });
-    }
 
+        return view;
+    }
+}
 //    @Override
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        View view = inflater.inflate(R.layout.fragment_task, container, false);
 //
 //        RecyclerView recyclerView = view.findViewById(R.id.listTask); // Replace 'listTask' with the actual ID of your RecyclerView
-//        DatabaseReference database = FirebaseDatabase.getInstance().getReference("task");
+//        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Task");
 //        recyclerView.setHasFixedSize(true);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //
-//        ArrayList<task> list = new ArrayList<>(); // Declare the 'list' variable
+//        ArrayList<Task> list = new ArrayList<>(); // Declare the 'list' variable
 //        TaskAdapter = new TaskAdapter(getActivity(), list);
 //        recyclerView.setAdapter(TaskAdapter);
 //
@@ -98,7 +86,7 @@ public class TaskFragment extends Fragment {
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                list.clear(); // Clear the list before adding new items
 //                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    task menuItem = dataSnapshot.getValue(task.class);
+//                    Task menuItem = dataSnapshot.getValue(Task.class);
 //                    list.add(menuItem);
 //                }
 //                TaskAdapter.notifyDataSetChanged();
@@ -161,7 +149,7 @@ public class TaskFragment extends Fragment {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    task menuItem = dataSnapshot.getValue(task.class);
+//                    Task menuItem = dataSnapshot.getValue(Task.class);
 //                    list.add(menuItem);
 //                }
 //                TaskAdapter.notifyDataSetChanged(); // Updated to menuAdapter
@@ -181,7 +169,7 @@ public class TaskFragment extends Fragment {
 //                @Override
 //                public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                        task menuItem = dataSnapshot.getValue(task.class);
+//                        Task menuItem = dataSnapshot.getValue(Task.class);
 //                        list.add(menuItem);
 //                    }
 //                    TaskAdapter.notifyDataSetChanged(); // Updated to menuAdapter
@@ -195,4 +183,3 @@ public class TaskFragment extends Fragment {
 //        } else {
 //            fetchDataFromFirebase();
 //        }
-    }
