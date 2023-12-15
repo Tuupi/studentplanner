@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -50,6 +56,9 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
     private FirebaseAuth mAuth;
     private EditText selectedDate;
     private Button pickDateBtn;
+    private DatabaseReference mDatabase;
+    private String userid;
+
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -58,14 +67,14 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_dashboard);
         OnBackPressedDispatcher back = getOnBackPressedDispatcher();
 
-
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         fab = findViewById(R.id.fab);
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         Toolbar toolbar = findViewById(R.id.toolbar);
-
+        userid = mAuth.getCurrentUser().getUid();
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
@@ -247,11 +256,23 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
         pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
         selectedDate = dialog.findViewById(R.id.Date);
+        EditText name = dialog.findViewById(R.id.examName);
+        EditText course = dialog.findViewById(R.id.CourseName);
+        EditText date = dialog.findViewById(R.id.Date);
+        Button submit = dialog.findViewById(R.id.create);
         dialog.show();
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                ExamModel exam = new ExamModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
+                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("course").setValue(course.getText().toString());
+                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("date").setValue(date.getText().toString());
             }
         });
         datebutton();
@@ -267,11 +288,41 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
         pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
         selectedDate = dialog.findViewById(R.id.Date);
+        EditText name = dialog.findViewById(R.id.TaskName);
+        EditText course = dialog.findViewById(R.id.CourseName);
+        EditText date = dialog.findViewById(R.id.Date);
+        Button submit = dialog.findViewById(R.id.create);
         dialog.show();
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabase.child("users").child(userid).child("task").child(name.getText().toString()).child("course").setValue(course.getText().toString());
+                mDatabase.child("users").child(userid).child("task").child(name.getText().toString()).child("date").setValue(date.getText().toString());
+////                TaskModel task = new TaskModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
+//                DatabaseReference agentRef = mDatabase.child("Courses");
+//                agentRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+//                            Toast.makeText(dashboard.this, "contol", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            TaskModel task = new TaskModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
+//                            agentRef.setValue(task);
+//                            Toast.makeText(dashboard.this, "Agent added successfully", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        Log.e("Firebase", "Error checking agent existence", error.toException());
+//                    }
+//                });
             }
         });
         datebutton();
@@ -289,11 +340,21 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
         pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
         selectedDate = dialog.findViewById(R.id.Date);
+        EditText course = dialog.findViewById(R.id.CourseName);
+        EditText date = dialog.findViewById(R.id.Date);
+        Button submit = dialog.findViewById(R.id.create);
         dialog.show();
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CourseModel task = new CourseModel(course.getText().toString(), date.getText().toString());
+                mDatabase.child("users").child(userid).child("courses").child(course.getText().toString()).child("date").setValue(date.getText().toString());
             }
         });
         datebutton();

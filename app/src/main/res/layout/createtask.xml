@@ -124,7 +124,7 @@
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/idBtnCreateExam"
+        android:id="@+id/create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
