@@ -31,6 +31,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.MyViewHolder holder, int position) {
         Task task = list.get(position);
+        holder.name.setText(task.getName());
         holder.course.setText(task.getCourse());
         holder.date.setText(task.getDate());
     }
@@ -42,11 +43,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView course, date;
+        TextView name, course, date;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            name = itemView.findViewById(R.id.TaskNameHint);
             course = itemView.findViewById(R.id.courseNameText);
             date = itemView.findViewById(R.id.dateHint);
         }
