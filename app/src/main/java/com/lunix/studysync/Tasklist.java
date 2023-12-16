@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Tasklist extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ArrayList<Mytask> list;
+    ArrayList<Task> list;
     DatabaseReference databaseReference;
     TaskAdapter taskAdapter;
 
@@ -46,8 +46,8 @@ public class Tasklist extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Mytask mytask = dataSnapshot.getValue(Mytask.class);
-                    list.add(mytask);
+                    Task task = dataSnapshot.getValue(Task.class);
+                    list.add(task);
                 }
                 taskAdapter.notifyDataSetChanged();
             }

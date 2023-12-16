@@ -292,6 +292,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         EditText course = dialog.findViewById(R.id.CourseName);
         EditText date = dialog.findViewById(R.id.Date);
         Button submit = dialog.findViewById(R.id.create);
+        Button view = dialog.findViewById(R.id.view);
         dialog.show();
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -325,6 +326,15 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
 //                });
             }
         });
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(dashboard.this, TaskFragment.class));
+                finish();
+            }
+        });
+
         datebutton();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

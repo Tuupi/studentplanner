@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +37,7 @@ public class TaskFragment extends Fragment {
     private DatabaseReference databaseUsers;
 
     RecyclerView recyclerView;
-    ArrayList<Mytask> list;
+    ArrayList<Task> list;
     DatabaseReference databaseReference;
     TaskAdapter taskAdapter;
 
@@ -100,19 +99,19 @@ public class TaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_task, container, false);
-        recyclerView = rootView.findViewById(R.id.recycleview);
+        recyclerView = rootView.findViewById(R.id.listTask);
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         list = new ArrayList<>();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        taskAdapter = new TaskAdapter(this, list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        taskAdapter = new TaskAdapter(requireContext(), list);
         recyclerView.setAdapter(taskAdapter);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Mytask mytask = dataSnapshot.getValue(Mytask.class);
-                    list.add(mytask);
+                    Task task = dataSnapshot.getValue(Task.class);
+                    list.add(task);
                 }
                 taskAdapter.notifyDataSetChanged();
             }
