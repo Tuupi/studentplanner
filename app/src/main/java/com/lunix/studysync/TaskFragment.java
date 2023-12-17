@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +35,7 @@ import java.util.ArrayList;
 public class TaskFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "TaskFragment";
     private String mParam1;
     private String mParam2;
     private DatabaseReference databaseUsers;
@@ -40,6 +44,9 @@ public class TaskFragment extends Fragment {
     ArrayList<Task> list;
     DatabaseReference databaseReference;
     TaskAdapter taskAdapter;
+
+    FirebaseAuth mAuth;
+   String user;
 
     public TaskFragment() {
         // Required empty public constructor
@@ -65,6 +72,8 @@ public class TaskFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -99,8 +108,10 @@ public class TaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_task, container, false);
-        recyclerView = rootView.findViewById(R.id.listTask);
-        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        recyclerView = rootView.findViewById(R.id.RVTask);
+
+        Log.d(TAG, "Debug log message" + user);
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(user).child("task");
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         taskAdapter = new TaskAdapter(requireContext(), list);
@@ -121,7 +132,7 @@ public class TaskFragment extends Fragment {
 
             }
         });
-        return inflater.inflate(R.layout.fragment_subject, container, false);
+        return inflater.inflate(R.layout.taskentry, container, false);
         // Inflate the layout for this fragment
 //        View rootView = inflater.inflate(R.layout.fragment_task, container, false);
 //        Button create = rootView.findViewById(R.id.create);

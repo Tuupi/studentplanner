@@ -303,8 +303,8 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.child("users").child(userid).child("task").child(name.getText().toString()).child("course").setValue(course.getText().toString());
-                mDatabase.child("users").child(userid).child("task").child(name.getText().toString()).child("date").setValue(date.getText().toString());
+                Task task = new Task(name.getText().toString(), course.getText().toString(), date.getText().toString());
+                mDatabase.child("users").child(userid).child("task").child(name.getText().toString()).setValue(task);
 ////                TaskModel task = new TaskModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
 //                DatabaseReference agentRef = mDatabase.child("Courses");
 //                agentRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -373,7 +373,9 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.CENTER);
     }
-
+    public String getiduser(){
+        return userid;
+    }
     private void datebutton(){
 
         // on below line we are adding click listener for our pick date button
