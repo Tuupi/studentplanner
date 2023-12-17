@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -108,8 +109,7 @@ public class TaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_task, container, false);
-        recyclerView = rootView.findViewById(R.id.RVTask);
-
+        recyclerView = rootView.findViewById(R.id.listTask);
         Log.d(TAG, "Debug log message" + user);
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(user).child("task");
         list = new ArrayList<>();
@@ -120,9 +120,13 @@ public class TaskFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Task task = dataSnapshot.getValue(Task.class);
-                    list.add(task);
+                            Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getName());
+                            Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getCourse());
+                            Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getDate());
+                            Task task = dataSnapshot.getValue(Task.class);
+                            list.add(task);
                 }
                 taskAdapter.notifyDataSetChanged();
             }
@@ -131,8 +135,11 @@ public class TaskFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
-        return inflater.inflate(R.layout.taskentry, container, false);
+
+        return rootView;
+
         // Inflate the layout for this fragment
 //        View rootView = inflater.inflate(R.layout.fragment_task, container, false);
 //        Button create = rootView.findViewById(R.id.create);
@@ -172,4 +179,5 @@ public class TaskFragment extends Fragment {
 //                    }
 //                });
     }
+
 }

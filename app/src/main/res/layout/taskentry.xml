@@ -21,17 +21,18 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="match_parent"
                 android:text="Name: "
                 android:textColor="@color/black"
                 android:textSize="24dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textname"
-                android:layout_width="wrap_content"
+                android:layout_width="272dp"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="24dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -46,12 +47,13 @@
                 android:textSize="24dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
+
             <TextView
                 android:id="@+id/textcourse"
-                android:layout_width="wrap_content"
+                android:layout_width="259dp"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="24dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -66,12 +68,13 @@
                 android:textSize="24dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
+
             <TextView
                 android:id="@+id/textdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="24dp" />
         </LinearLayout>
 
     </LinearLayout>
