@@ -52,4 +52,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
             date = itemView.findViewById(R.id.textdate);
         }
     }
+//    public void restoreItem(Task item, int position) {
+//        list.add(position ,item);
+//        notifyItemChanged(position);
+//    }
+
 }
