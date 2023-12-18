@@ -1,7 +1,11 @@
 package com.lunix.studysync;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,11 +16,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +37,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
@@ -55,6 +64,8 @@ public class ExamFragment extends Fragment {
 
     FirebaseAuth mAuth;
     String user;
+    Button pickDateBtn;
+    EditText selectedDate;
 
     public ExamFragment() {
         // Required empty public constructor
@@ -123,7 +134,7 @@ public class ExamFragment extends Fragment {
             }
 
         });
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -131,36 +142,147 @@ public class ExamFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setCancelable(false);
-                int position = viewHolder.getAdapterPosition(); // this is how you can get the position
-                Exam exam = examAdapter.list.get(position);
-                builder.setMessage("Are you sure you want to delete " + exam.getName());
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //if user pressed "yes", then he is allowed to exit from application
-                        // You will have your own class ofcourse.
+                if (direction == ItemTouchHelper.RIGHT) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setCancelable(false);
+                    int position = viewHolder.getAdapterPosition(); // this is how you can get the position
+                    Exam exam = examAdapter.list.get(position);
+                    builder.setMessage("Are you sure you want to delete " + exam.getName());
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //if user pressed "yes", then he is allowed to exit from application
+                            // You will have your own class ofcourse.
 
-                        // then you can delete the object
-                        databaseReference.child(exam.getName()).setValue(null);
-                    }
-                });
-                builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //if user select "No", just cancel this dialog and continue with app
-                        examAdapter.notifyItemChanged(position);
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog alert=builder.create();
-                alert.show();
+                            // then you can delete the object
+                            databaseReference.child(exam.getName()).setValue(null);
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //if user select "No", just cancel this dialog and continue with app
+                            examAdapter.notifyItemChanged(position);
+                            dialog.cancel();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
 
+                }
+                if (direction == ItemTouchHelper.LEFT) {
+                    Log.d(TAG, "Test Left");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setCancelable(false);
+                    int position = viewHolder.getAdapterPosition(); // this is how you can get the position
+
+                    builder.setMessage("Edit This? ");
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            examAdapter.notifyItemChanged(position);
+                            editTask(examAdapter.list.get(position));
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //if user select "No", just cancel this dialog and continue with app
+                            examAdapter.notifyItemChanged(position);
+                            dialog.cancel();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
+
+                }
             }
         });
 
         itemTouchHelper.attachToRecyclerView(recyclerView);
+
         return rootView;
+    }
+    private void editTask(Exam e){
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.createexam);
+        ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
+        pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
+        selectedDate = dialog.findViewById(R.id.Date);
+        EditText name = dialog.findViewById(R.id.examName);
+        name.setFocusable(false);
+        EditText course = dialog.findViewById(R.id.CourseName);
+        EditText date = dialog.findViewById(R.id.Date);
+        Button submit = dialog.findViewById(R.id.createExam);
+        Exam exam = e;
+        name.setText(exam.getName());
+        course.setText(exam.getCourse());
+        date.setText(exam.getDate());
+        dialog.show();
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                exam.setName(name.getText().toString());
+                exam.setCourse(course.getText().toString());
+                exam.setDate(date.getText().toString());
+                databaseReference.child(name.getText().toString()).setValue(exam);
+                Toast.makeText(getContext(),"Updated " + name.getText(),Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+////                ExamModel exam = new ExamModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
+//                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("course").setValue(course.getText().toString());
+//                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("date").setValue(date.getText().toString());
+            }
+        });
+        datebutton();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.CENTER);
+    }
+    private void datebutton(){
+
+        // on below line we are adding click listener for our pick date button
+        pickDateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // on below line we are getting
+                // the instance of our calendar.
+                final Calendar c = Calendar.getInstance();
+
+                // on below line we are getting
+                // our day, month and year.
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+
+                // on below line we are creating a variable for date picker dialog.
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        // on below line we are passing context.
+                        getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // on below line we are setting date to our text view.
+                                selectedDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                            }
+                        },
+                        // on below line we are passing year,
+                        // month and day for selected date in our date picker.
+                        year, month, day);
+                // at last we are calling show to
+                // display our date picker dialog.
+                datePickerDialog.show();
+            }
+        });
     }
 }

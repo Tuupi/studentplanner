@@ -27,4 +27,14 @@ public class Exam {
     public String getDate() {
         return date;
     }
+
+
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }
