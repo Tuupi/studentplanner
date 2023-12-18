@@ -25,9 +25,9 @@
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <FrameLayout
+            android:id="@+id/frame_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/frame_layout"/>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
@@ -38,8 +38,8 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
-        app:itemIconTint="@color/darkest_blue"
         app:itemTextColor="@color/darkest_blue"/>
+    <!--        app:itemIconTint="@color/darkest_blue"-->
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

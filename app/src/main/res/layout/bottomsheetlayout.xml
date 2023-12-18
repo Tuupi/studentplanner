@@ -27,7 +27,8 @@
             android:textColor="@color/darkest_blue"
             android:layout_marginStart="12dp"
             android:layout_marginTop="5dp"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:fontFamily="@font/poppins_medium"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -59,7 +60,8 @@
             android:text="Create a new task"
             android:textColor="@color/darkest_blue"
             android:layout_marginLeft="30dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins"/>
 
     </LinearLayout>
 
@@ -82,7 +84,8 @@
             android:text="Create a new exam"
             android:textColor="@color/darkest_blue"
             android:layout_marginLeft="30dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins"/>
 
     </LinearLayout>
 
@@ -108,7 +111,8 @@
             android:layout_marginLeft="30dp"
             android:text="Create a new subject"
             android:textColor="@color/darkest_blue"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins"/>
 
     </LinearLayout>
 

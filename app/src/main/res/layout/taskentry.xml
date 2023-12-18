@@ -23,16 +23,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Name: "
-                android:textColor="@color/black"
-                android:textSize="24dp"
-                android:textStyle="bold" />
+                android:textColor="@color/darkest_blue"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"/>
 
             <TextView
                 android:id="@+id/textname"
                 android:layout_width="272dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textColor="@color/darkest_blue"
+                android:textSize="18dp"
+                android:fontFamily="@font/poppins"/>
         </LinearLayout>
 
         <LinearLayout
@@ -44,16 +46,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Course: "
-                android:textSize="24dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="18dp"
+                android:textColor="@color/darkest_blue"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"/>
 
             <TextView
                 android:id="@+id/textcourse"
                 android:layout_width="259dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textColor="@color/darkest_blue"
+                android:textSize="18dp"
+                android:fontFamily="@font/poppins"/>
         </LinearLayout>
 
         <LinearLayout
@@ -65,16 +69,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date: "
-                android:textSize="24dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="18dp"
+                android:textColor="@color/darkest_blue"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"/>
 
             <TextView
                 android:id="@+id/textdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textColor="@color/darkest_blue"
+                android:textSize="18dp"
+                android:fontFamily="@font/poppins"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -27,7 +27,8 @@
             android:textColor="@color/darkest_blue"
             android:layout_marginStart="12dp"
             android:layout_marginTop="5dp"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:fontFamily="@font/poppins_semibold"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -76,7 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Course :"
-            android:textFontWeight="100"/>
+            android:textFontWeight="100"
+            android:fontFamily="@font/poppins"/>
 
 
         <EditText
@@ -84,7 +86,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:hint="Course Name" />
+            android:hint="Course Name"
+            android:fontFamily="@font/poppins"/>
 
     </LinearLayout>
 
@@ -100,7 +103,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Date :"
-        android:textFontWeight="100"/>
+        android:textFontWeight="100"
+        android:fontFamily="@font/poppins"/>
 
 
     <EditText
@@ -112,7 +116,8 @@
         android:focusableInTouchMode="false"
         android:hint="DD-MM-YYYY"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:fontFamily="@font/poppins"/>
 
 </LinearLayout>
 
@@ -123,7 +128,8 @@
         android:layout_centerInParent="true"
         android:layout_margin="20dp"
         android:text="Pick Date"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_medium"/>
 
     <Button
         android:id="@+id/createSubject"
@@ -132,7 +138,9 @@
         android:layout_centerInParent="true"
         android:layout_margin="20dp"
         android:text="Submit"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_medium"/>
+
     <View
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>

@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/my_primary"
+        android:background="@color/darkest_blue"
         android:alpha="0.7"/>
 
     <LinearLayout
@@ -22,16 +22,16 @@
         android:padding="28dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/location_icon"/>
+            android:layout_width="62dp"
+            android:layout_height="103dp"
+            android:src="@drawable/clip" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="StudySync"
+            android:text="Student Planner"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/poppins"
             android:textSize="32sp"
             android:textColor="@color/white"/>
 
@@ -56,15 +56,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Welcome"
-                android:textColor="@color/my_primary"
+                android:textColor="@color/dark_blue"
                 android:textSize="32sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Please login with your information"
-                android:alpha="0.7"/>
+                android:alpha="0.7"
+                android:fontFamily="@font/poppins"/>
 
             <View
                 android:layout_width="wrap_content"
@@ -74,14 +76,15 @@
                 android:layout_height="wrap_content"
                 android:text="Email Address"
                 android:alpha="0.7"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins"/>
 
             <EditText
                 android:id="@+id/emailreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/done_icon"
                 android:inputType="textEmailAddress" />
+            <!--                android:drawableEnd="@drawable/done_icon"-->
 
             <View
                 android:layout_width="wrap_content"
@@ -91,14 +94,15 @@
                 android:layout_height="wrap_content"
                 android:text="Password"
                 android:alpha="0.7"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins"/>
 
             <EditText
                 android:id="@+id/passwordreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/password_icon"
                 android:inputType="textPassword" />
+            <!--                android:drawableEnd="@drawable/password_icon"-->
 
 <!--            <RelativeLayout-->
 <!--                android:layout_width="match_parent"-->
@@ -128,7 +132,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Login"
-                app:cornerRadius="32dp" />
+                app:cornerRadius="32dp"
+                android:fontFamily="@font/poppins_semibold"/>
 
             <View
                 android:layout_width="wrap_content"
@@ -138,7 +143,8 @@
                 android:layout_height="wrap_content"
                 android:text="Haven't registered?"
                 android:layout_gravity="center"
-                android:alpha="0.7"/>
+                android:alpha="0.7"
+                android:fontFamily="@font/poppins"/>
 
             <View
                 android:layout_width="wrap_content"
@@ -150,10 +156,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Register"
-                android:textColor="@color/my_primary"
+                android:textColor="@color/dark_blue"
                 app:backgroundTint="@android:color/white"
                 app:cornerRadius="32dp"
-                app:strokeColor="@color/my_primary" />
+                app:strokeColor="@color/dark_blue"
+                android:fontFamily="@font/poppins"/>
 
             <View
                 android:id="@+id/regist"
