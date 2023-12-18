@@ -9,14 +9,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listTask"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Tasks"
-        android:textColor="@color/darkest_blue"
-        android:textSize="30sp" />
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

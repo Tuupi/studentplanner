@@ -272,6 +272,8 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             public void onClick(View v) {
                 Exam exam = new Exam(name.getText().toString(), course.getText().toString(), date.getText().toString());
                 mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).setValue(exam);
+                Toast.makeText(dashboard.this,"Created " + name.getText(),Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
 ////                ExamModel exam = new ExamModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
 //                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("course").setValue(course.getText().toString());
 //                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("date").setValue(date.getText().toString());
@@ -307,13 +309,15 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             public void onClick(View v) {
                 Task task = new Task(name.getText().toString(), course.getText().toString(), date.getText().toString());
                 mDatabase.child("users").child(userid).child("task").child(name.getText().toString()).setValue(task);
+                Toast.makeText(dashboard.this,"Created " + name.getText(),Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
 ////                TaskModel task = new TaskModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
 //                DatabaseReference agentRef = mDatabase.child("Courses");
 //                agentRef.addListenerForSingleValueEvent(new ValueEventListener() {
 //                    @Override
 //                    public void onDataChange(DataSnapshot dataSnapshot) {
 //                        if (dataSnapshot.exists()) {
-//                            Toast.makeText(dashboard.this, "contol", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(dashboard.this, "hehe", Toast.LENGTH_SHORT).show();
 //                        } else {
 //                            TaskModel task = new TaskModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
 //                            agentRef.setValue(task);
@@ -367,6 +371,8 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             public void onClick(View v) {
                 Subject subject = new Subject(course.getText().toString(), date.getText().toString());
                 mDatabase.child("users").child(userid).child("courses").child(course.getText().toString()).setValue(subject);
+                Toast.makeText(dashboard.this,"Created " + course.getText(),Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
             }
         });
         datebutton();
