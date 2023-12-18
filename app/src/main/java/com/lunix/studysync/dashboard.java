@@ -365,8 +365,8 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CourseModel task = new CourseModel(course.getText().toString(), date.getText().toString());
-                mDatabase.child("users").child(userid).child("courses").child(course.getText().toString()).child("date").setValue(date.getText().toString());
+                Subject subject = new Subject(course.getText().toString(), date.getText().toString());
+                mDatabase.child("users").child(userid).child("courses").child(course.getText().toString()).setValue(subject);
             }
         });
         datebutton();
