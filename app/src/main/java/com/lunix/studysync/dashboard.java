@@ -341,11 +341,11 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
 //            }
 //        });
 //
-//        datebutton();
-//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-//        dialog.getWindow().setGravity(Gravity.CENTER);
+        datebutton();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.CENTER);
 
 
     }

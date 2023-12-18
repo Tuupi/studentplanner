@@ -28,7 +28,9 @@ public class Exam {
         return date;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void setCourse(String course) {
         this.course = course;

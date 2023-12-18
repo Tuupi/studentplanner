@@ -212,11 +212,11 @@ public class ExamFragment extends Fragment {
         pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
         selectedDate = dialog.findViewById(R.id.Date);
         EditText name = dialog.findViewById(R.id.examName);
-        name.setFocusable(false);
         EditText course = dialog.findViewById(R.id.CourseName);
         EditText date = dialog.findViewById(R.id.Date);
         Button submit = dialog.findViewById(R.id.createExam);
         Exam exam = e;
+        String placeholder = exam.getName();
         name.setText(exam.getName());
         course.setText(exam.getCourse());
         date.setText(exam.getDate());
@@ -230,7 +230,8 @@ public class ExamFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                exam.setName(name.getText().toString());
+                databaseReference.child(placeholder).setValue(null);
+                exam.setName(name.getText().toString());
                 exam.setCourse(course.getText().toString());
                 exam.setDate(date.getText().toString());
                 databaseReference.child(name.getText().toString()).setValue(exam);

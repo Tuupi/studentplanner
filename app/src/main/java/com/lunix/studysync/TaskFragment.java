@@ -228,11 +228,11 @@ public class TaskFragment extends Fragment {
         pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
         selectedDate = dialog.findViewById(R.id.Date);
         EditText name = dialog.findViewById(R.id.examName);
-        name.setFocusable(false);
         EditText course = dialog.findViewById(R.id.CourseName);
         EditText date = dialog.findViewById(R.id.Date);
         Button submit = dialog.findViewById(R.id.createExam);
         Task task = t;
+        String placeholder = task.getName();
         name.setText(task.getName());
         course.setText(task.getCourse());
         date.setText(task.getDate());
@@ -246,7 +246,8 @@ public class TaskFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                task.setName(name.getText().toString());
+                databaseReference.child(placeholder).setValue(null);
+                task.setName(name.getText().toString());
                 task.setCourse(course.getText().toString());
                 task.setDate(date.getText().toString());
                 databaseReference.child(name.getText().toString()).setValue(task);

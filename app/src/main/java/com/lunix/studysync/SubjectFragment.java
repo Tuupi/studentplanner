@@ -210,10 +210,10 @@ public class SubjectFragment extends Fragment {
         pickDateBtn = dialog.findViewById(R.id.idBtnPickDate);
         selectedDate = dialog.findViewById(R.id.Date);
         EditText course = dialog.findViewById(R.id.CourseName);
-        course.setFocusable(false);
         EditText date = dialog.findViewById(R.id.Date);
         Button submit = dialog.findViewById(R.id.createSubject);
         Subject subject = s;
+        String placeholder = subject.getCourse();
         course.setText(subject.getCourse());
         date.setText(subject.getDate());
         dialog.show();
@@ -226,7 +226,8 @@ public class SubjectFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                subject.setCourse(course.getText().toString());
+                databaseReference.child(placeholder).setValue(null);
+                subject.setCourse(course.getText().toString());
                 subject.setDate(date.getText().toString());
                 databaseReference.child(course.getText().toString()).setValue(subject);
                 Toast.makeText(getContext(),"Updated " + course.getText(),Toast.LENGTH_SHORT).show();
