@@ -78,6 +78,8 @@ public class ExamFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -92,7 +94,7 @@ public class ExamFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_exam, container, false);
         recyclerView = rootView.findViewById(R.id.listExam);
         Log.d(TAG, "Debug log message" + user);
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(user).child("exam");
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(user).child("exams");
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         examAdapter = new ExamAdapter(requireContext(), list);

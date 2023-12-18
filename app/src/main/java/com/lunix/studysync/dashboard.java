@@ -259,7 +259,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         EditText name = dialog.findViewById(R.id.examName);
         EditText course = dialog.findViewById(R.id.CourseName);
         EditText date = dialog.findViewById(R.id.Date);
-        Button submit = dialog.findViewById(R.id.create);
+        Button submit = dialog.findViewById(R.id.createExam);
         dialog.show();
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,9 +270,11 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ExamModel exam = new ExamModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
-                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("course").setValue(course.getText().toString());
-                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("date").setValue(date.getText().toString());
+                Exam exam = new Exam(name.getText().toString(), course.getText().toString(), date.getText().toString());
+                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).setValue(exam);
+////                ExamModel exam = new ExamModel(name.getText().toString(), course.getText().toString(), date.getText().toString());
+//                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("course").setValue(course.getText().toString());
+//                mDatabase.child("users").child(userid).child("exams").child(name.getText().toString()).child("date").setValue(date.getText().toString());
             }
         });
         datebutton();
@@ -291,7 +293,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         EditText name = dialog.findViewById(R.id.TaskName);
         EditText course = dialog.findViewById(R.id.CourseName);
         EditText date = dialog.findViewById(R.id.Date);
-        Button submit = dialog.findViewById(R.id.create);
+        Button submit = dialog.findViewById(R.id.createTask);
         Button view = dialog.findViewById(R.id.view);
         dialog.show();
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -352,7 +354,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         selectedDate = dialog.findViewById(R.id.Date);
         EditText course = dialog.findViewById(R.id.CourseName);
         EditText date = dialog.findViewById(R.id.Date);
-        Button submit = dialog.findViewById(R.id.create);
+        Button submit = dialog.findViewById(R.id.createSubject);
         dialog.show();
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
