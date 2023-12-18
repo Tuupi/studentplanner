@@ -263,7 +263,7 @@ public class ExamFragment extends Fragment {
                 int year = c.get(Calendar.YEAR);
                 int month = c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
-
+                c.set(Calendar.DAY_OF_MONTH, day);
                 // on below line we are creating a variable for date picker dialog.
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         // on below line we are passing context.
@@ -273,13 +273,26 @@ public class ExamFragment extends Fragment {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // on below line we are setting date to our text view.
-                                selectedDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
+                                Calendar cal = Calendar.getInstance();
+                                cal.set(Calendar.MONTH, monthOfYear);
+                                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                cal.set(Calendar.YEAR, year);
+                                if(cal.before(c)) {
+                                    Toast.makeText(getContext(),"please enter a valid date",Toast.LENGTH_SHORT).show();
+                                    // notify user about wrong date.
+                                    return;
+                                }
+                                StringBuilder date = new StringBuilder();
+                                date.append((dayOfMonth<10?"0":"")).append(dayOfMonth)
+                                        .append("-").append((monthOfYear + 1) < 10 ? "0" : "")
+                                        .append((monthOfYear+1)).append("-").append(year);
+                                selectedDate.setText(date);
                             }
                         },
                         // on below line we are passing year,
                         // month and day for selected date in our date picker.
                         year, month, day);
+
                 // at last we are calling show to
                 // display our date picker dialog.
                 datePickerDialog.show();
