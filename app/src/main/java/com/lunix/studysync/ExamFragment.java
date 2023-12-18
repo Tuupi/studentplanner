@@ -56,6 +56,7 @@ public class ExamFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private DatabaseReference databaseUsers;
+    final Calendar k = Calendar.getInstance();
 
     RecyclerView recyclerView;
     ArrayList<Exam> list;
@@ -94,6 +95,7 @@ public class ExamFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        k.set(Calendar.DAY_OF_MONTH, k.get(Calendar.DAY_OF_MONTH));
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -119,11 +121,18 @@ public class ExamFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Exam.class).getName());
-                    Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Exam.class).getCourse());
-                    Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Exam.class).getDate());
-                    Exam exam = dataSnapshot.getValue(Exam.class);
-                    list.add(exam);
+                    CheckDate check = new CheckDate(dataSnapshot.getValue(Exam.class).getDate(), k);
+                    if (check.compareDates() == "after"){
+                        Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Exam.class).getName());
+                        Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Exam.class).getCourse());
+                        Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Exam.class).getDate());
+                        Exam exam = dataSnapshot.getValue(Exam.class);
+                        list.add(exam);
+                    } else if (check.compareDates() == "before") {
+                        Exam exam = dataSnapshot.getValue(Exam.class);
+                        databaseReference.child(exam.getName()).setValue(null);
+                    }
+
                 }
                 examAdapter.notifyDataSetChanged();
             }

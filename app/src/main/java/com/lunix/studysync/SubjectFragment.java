@@ -64,6 +64,7 @@ public class SubjectFragment extends Fragment {
     String user;
     EditText selectedDate;
     Button pickDateBtn;
+    final Calendar k = Calendar.getInstance();
 
     public SubjectFragment() {
         // Required empty public constructor
@@ -92,6 +93,7 @@ public class SubjectFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        k.set(Calendar.DAY_OF_MONTH, k.get(Calendar.DAY_OF_MONTH));
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -115,12 +117,19 @@ public class SubjectFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 list.clear();
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Subject.class).getCourse());
-                    Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Subject.class).getDate());
-                    Subject subject = dataSnapshot.getValue(Subject.class);
-                    list.add(subject);
+                    CheckDate check = new CheckDate(dataSnapshot.getValue(Subject.class).getDate(), k);
+                    if (check.compareDates() == "after") {
+                        Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Subject.class).getCourse());
+                        Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Subject.class).getDate());
+                        Subject subject = dataSnapshot.getValue(Subject.class);
+                        list.add(subject);
+                    } else if (check.compareDates() == "before") {
+                        Subject subject = dataSnapshot.getValue(Subject.class);
+                        databaseReference.child(subject.getCourse()).setValue(null);
+                    }
                 }
                 subjectAdapter.notifyDataSetChanged();
             }

@@ -36,6 +36,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -52,6 +54,7 @@ public class TaskFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private DatabaseReference databaseUsers;
+    final Calendar k = Calendar.getInstance();
 
     RecyclerView recyclerView;
     ArrayList<Task> list;
@@ -89,6 +92,7 @@ public class TaskFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        k.set(Calendar.DAY_OF_MONTH, k.get(Calendar.DAY_OF_MONTH));
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -133,13 +137,20 @@ public class TaskFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 list.clear();
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                            Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getName());
-                            Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getCourse());
-                            Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getDate());
-                            Task task = dataSnapshot.getValue(Task.class);
-                            list.add(task);
+                    CheckDate check = new CheckDate(dataSnapshot.getValue(Task.class).getDate(), k);
+                    if(check.compareDates() == "after") {
+                        Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getName());
+                        Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getCourse());
+                        Log.d(TAG, "Test nama : " + dataSnapshot.getValue(Task.class).getDate());
+                        Task task = dataSnapshot.getValue(Task.class);
+                        list.add(task);
+                    } else if (check.compareDates() == "before") {
+                        Task task = dataSnapshot.getValue(Task.class);
+                        databaseReference.child(task.getName()).setValue(null);
+                    }
                 }
                 taskAdapter.notifyDataSetChanged();
             }
