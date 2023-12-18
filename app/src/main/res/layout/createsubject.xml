@@ -126,7 +126,7 @@
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/create"
+        android:id="@+id/createSubject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

@@ -26,7 +26,7 @@ public class MainTask extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.createtask);
-        create = findViewById(R.id.create);
+        create = findViewById(R.id.createTask);
         view = findViewById(R.id.view);
         name = findViewById(R.id.TaskName);
         course = findViewById(R.id.CourseName);
