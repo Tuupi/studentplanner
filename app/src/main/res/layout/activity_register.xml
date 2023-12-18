@@ -24,15 +24,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Welcome"
-                android:textColor="@color/my_primary"
+                android:textColor="@color/dark_blue"
                 android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Register here" />
+                android:text="Register here"
+                android:fontFamily="@font/poppins"/>
 
             <View
                 android:layout_width="wrap_content"
@@ -43,14 +45,17 @@
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
                 android:text="Email Address"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins"/>
 
             <EditText
                 android:id="@+id/emailreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/done_icon"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:fontFamily="@font/poppins"/>
+
+<!--            android:drawableEnd="@drawable/done_icon"-->
 
             <View
                 android:layout_width="wrap_content"
@@ -61,14 +66,17 @@
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
                 android:text="Password"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins"/>
 
             <EditText
                 android:id="@+id/passwordreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/password_icon"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:fontFamily="@font/poppins"/>
+
+<!--            android:drawableEnd="@drawable/password_icon"-->
 
             <!--            <RelativeLayout-->
             <!--                android:layout_width="match_parent"-->
@@ -98,7 +106,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Submit"
-                app:cornerRadius="32dp" />
+                app:cornerRadius="32dp"
+                android:fontFamily="@font/poppins_medium"/>
 
             <View
                 android:layout_width="wrap_content"

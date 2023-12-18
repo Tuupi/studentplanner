@@ -5,12 +5,12 @@
     <item
         android:id="@+id/home"
         android:title="Home"
-        android:icon="@drawable/home"/>
+        android:icon="@drawable/hm"/>
 
     <item
         android:id="@+id/task"
         android:title="Tasks"
-        android:icon="@drawable/task"/>
+        android:icon="@drawable/sbj"/>
 
     <item
         android:title=""/>
@@ -18,10 +18,10 @@
     <item
         android:id="@+id/exam"
         android:title="Exams"
-        android:icon="@drawable/exam" />
+        android:icon="@drawable/exm"/>
     <item
         android:id="@+id/subject"
         android:title="Subject"
-        android:icon="@drawable/subject"/>
+        android:icon="@drawable/book"/>
 
 </menu>

@@ -163,7 +163,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(dashboard.this,"Upload a Video is clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(dashboard.this,"Task",Toast.LENGTH_SHORT).show();
                 showNewTask();
 
             }
@@ -174,7 +174,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(dashboard.this,"Create a short is Clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(dashboard.this,"Exam",Toast.LENGTH_SHORT).show();
                 showNewExam();
             }
         });
@@ -184,7 +184,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(dashboard.this,"Go live is Clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(dashboard.this,"Subject",Toast.LENGTH_SHORT).show();
                 showNewCourse();
 
             }
@@ -233,13 +233,13 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
             alert.show();
 
         } else if(menuItem.getItemId() == R.id.nav_home){
-            Toast.makeText(dashboard.this,"Create a home is Clicked",Toast.LENGTH_SHORT).show();
+            Toast.makeText(dashboard.this,"Home",Toast.LENGTH_SHORT).show();
         }
 //        else if(menuItem.getItemId() == R.id.nav_settings){
 //            Toast.makeText(dashboard.this,"Create a settings is Clicked",Toast.LENGTH_SHORT).show();
 //        }
         else if(menuItem.getItemId() == R.id.nav_about){
-            Toast.makeText(dashboard.this,"Create a about is Clicked",Toast.LENGTH_SHORT).show();
+            Toast.makeText(dashboard.this,"About Us",Toast.LENGTH_SHORT).show();
             Intent switchActivityIntent = new Intent(dashboard.this, aboutUs.class);
             startActivity(switchActivityIntent);
         }
