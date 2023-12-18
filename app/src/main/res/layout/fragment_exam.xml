@@ -6,17 +6,17 @@
     tools:context=".ExamFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listExam"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Exams"
         android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/darkest_blue" />
-
-    <ListView
-        android:layout_width="351dp"
-        android:layout_height="827dp"
-        android:layout_gravity="center" />
+        android:text="Tasks"
+        android:textColor="@color/darkest_blue"
+        android:textSize="30sp" />
 
 </FrameLayout>
