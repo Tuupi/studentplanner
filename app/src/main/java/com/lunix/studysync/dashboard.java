@@ -416,6 +416,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
                         // on below line we are passing year,
                         // month and day for selected date in our date picker.
                         year, month, day);
+
                 // at last we are calling show to
                 // display our date picker dialog.
                 datePickerDialog.show();
